@@ -30,6 +30,8 @@ RSpec.describe Garden do
 
     it "#unique_plants" do
       expect(garden1.unique_plants).to eq([plant_2.name, plant_3.name, plant_4.name].sort)
+      expect(garden1.unique_plants).to_not eq(plant_1.name)
+      expect(garden1.unique_plants).to_not eq(plant_6.name)
     end
   end
 end

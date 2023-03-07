@@ -27,9 +27,9 @@ RSpec.describe 'Garden Show Page' do
     describe "When I visit the /gardens/:id" do
       it "I see a unique list of plants that are included in that garden's plots that take less than 100 days to harvest" do
         expect(page).to have_content("Plants")
-        expect(page).to have_content(plant_2.name)
-        expect(page).to have_content(plant_3.name)
-        expect(page).to have_content(plant_4.name)
+        expect(page).to have_content(plant_2.name).once
+        expect(page).to have_content(plant_3.name).once
+        expect(page).to have_content(plant_4.name).once
         
         expect(page).to_not have_content(plant_1.name)
         expect(page).to_not have_content(plant_5.name)
