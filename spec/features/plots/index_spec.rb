@@ -72,7 +72,6 @@ RSpec.describe 'Plots Index Page' do
           expect(page).to have_content(plant_4.name)
           expect(page).to have_content(plant_5.name)
         end
-        save_and_open_page
       end
     end
   end
