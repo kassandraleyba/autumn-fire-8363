@@ -42,13 +42,6 @@ RSpec.describe 'Plots Index Page' do
     end
 
     # User Story 2, Remove a Plant from a Plot
-    # Next to each plant's name
-    # I see a link to remove that plant from that plot
-    # When I click on that link
-    # I'm returned to the plots index page
-    # And I no longer see that plant listed under that plot,
-    # And I still see that plant's name under other plots that is was associated with.
-
     describe "When I visit the /plots" do
       it "I see a link to remove that plant from that plot" do
         within "#plot-#{plot_1.id}" do
@@ -68,7 +61,6 @@ RSpec.describe 'Plots Index Page' do
           expect(page).to have_content(plant_4.name)
           expect(page).to have_content(plant_5.name)
         end
-        save_and_open_page
       end
     end
   end

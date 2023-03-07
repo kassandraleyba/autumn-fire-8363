@@ -1,13 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Garden do
-  describe 'relationships' do
-    it { should have_many(:plots) }
-    it { should have_many(:plant_plots).through(:plots) }
-    it { should have_many(:plants).through(:plant_plots) }
-  end
-
-  describe "instance methods" do
+RSpec.describe 'Garden Show Page' do
+  describe "As a visitor" do
     let!(:garden1) { Garden.create!(name: "Turing Community Garden", organic: true) }
 
     let!(:plot_1) { garden1.plots.create!(number: 25, size: "Large", direction: "East") }
@@ -26,10 +20,27 @@ RSpec.describe Garden do
       PlantPlot.create!(plant: plant_3, plot: plot_1)
       PlantPlot.create!(plant: plant_4, plot: plot_2)
       PlantPlot.create!(plant: plant_5, plot: plot_2)
-    end
 
-    it "#unique_plants" do
-      expect(garden1.unique_plants).to eq([plant_2.name, plant_3.name, plant_4.name].sort)
+      visit "/gardens/#{garden1.id}}"
+    end
+    # User Story 3, Garden's Plants
+
+    # As a visitor
+    # When I visit a garden's show page ('/gardens/:id')
+    # Then I see a list of plants that are included in that garden's plots
+    # And I see that this list is unique (no duplicate plants)
+    # And I see that this list only includes plants that take less than 100 days to harvest
+    
+    describe "When I visit the /gardens/:id" do
+      it "I see a unique list of plants that are included in that garden's plots that take less than 100 days to harvest" do
+        expect(page).to have_content(plant_2.name)
+        expect(page).to have_content(plant_3.name)
+        expect(page).to have_content(plant_4.name)
+        
+        expect(page).to_not have_content(plant_1.name)
+        expect(page).to_not have_content(plant_5.name)
+        expect(page).to_not have_content(plant_6.name)
+      end
     end
   end
 end
