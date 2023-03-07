@@ -23,15 +23,9 @@ RSpec.describe 'Garden Show Page' do
       visit "/gardens/#{garden1.id}"
     end
     # User Story 3, Garden's Plants
-
-    # As a visitor
-    # When I visit a garden's show page ('/gardens/:id')
-    # Then I see a list of plants that are included in that garden's plots
-    # And I see that this list is unique (no duplicate plants)
-    # And I see that this list only includes plants that take less than 100 days to harvest
-    
     describe "When I visit the /gardens/:id" do
       it "I see a unique list of plants that are included in that garden's plots that take less than 100 days to harvest" do
+        expect(page).to have_content("Plants")
         expect(page).to have_content(plant_2.name)
         expect(page).to have_content(plant_3.name)
         expect(page).to have_content(plant_4.name)
