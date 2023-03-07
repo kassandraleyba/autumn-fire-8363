@@ -22,6 +22,7 @@ RSpec.describe 'Garden Show Page' do
 
       visit "/gardens/#{garden1.id}"
     end
+
     # User Story 3, Garden's Plants
     describe "When I visit the /gardens/:id" do
       it "I see a unique list of plants that are included in that garden's plots that take less than 100 days to harvest" do

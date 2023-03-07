@@ -29,7 +29,7 @@ RSpec.describe 'Plots Index Page' do
         within "#plot-#{plot_1.id}" do
           expect(page).to have_content("Plot")
           expect(page).to have_content(plot_1.number)
-          
+
           expect(page).to have_content("Plants")
           expect(page).to have_content(plant_1.name)
           expect(page).to have_content(plant_2.name)
