@@ -12,7 +12,6 @@ RSpec.describe 'Garden Show Page' do
     let!(:plant_3) { Plant.create!(name: "Thyme", description: "Green", days_to_harvest: 80) }
     let!(:plant_4) { Plant.create!(name: "Basil", description: "Green", days_to_harvest: 70) }
     let!(:plant_5) { Plant.create!(name: "Lavender", description: "Purple", days_to_harvest: 120) }
-    let!(:plant_6) { Plant.create!(name: "Basil", description: "Green", days_to_harvest: 70) }
 
     before do
       PlantPlot.create!(plant: plant_1, plot: plot_1)
@@ -21,7 +20,7 @@ RSpec.describe 'Garden Show Page' do
       PlantPlot.create!(plant: plant_4, plot: plot_2)
       PlantPlot.create!(plant: plant_5, plot: plot_2)
 
-      visit "/gardens/#{garden1.id}}"
+      visit "/gardens/#{garden1.id}"
     end
     # User Story 3, Garden's Plants
 
@@ -39,7 +38,6 @@ RSpec.describe 'Garden Show Page' do
         
         expect(page).to_not have_content(plant_1.name)
         expect(page).to_not have_content(plant_5.name)
-        expect(page).to_not have_content(plant_6.name)
       end
     end
   end
